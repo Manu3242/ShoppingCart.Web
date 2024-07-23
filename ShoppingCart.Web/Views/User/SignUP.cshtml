@@ -1,0 +1,43 @@
+﻿@model UserVM
+
+<h1> User Registration </h1>
+
+@using (Html.BeginForm("UserSignUP","User",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+
+    <div>
+        @Html.Label("First Name")
+        @Html.EditorFor(x=>x.Firstname)
+        @Html.ValidationMessageFor(x=>x.Firstname)
+    </div>
+
+    <div>
+        @Html.Label("Last Name")
+        @Html.EditorFor(x=>x.Lastname)
+        @Html.ValidationMessageFor(x=>x.Lastname)
+    </div>
+
+    <div>
+        @Html.Label("Email")
+        @Html.EditorFor(x=>x.Emailid)
+        @Html.ValidationMessageFor(x=>x.Emailid)
+    </div>
+
+    <div>
+        @Html.Label("Password")
+        @Html.PasswordFor(x=>x.Password)
+        @Html.ValidationMessageFor(x=>x.Password)
+    </div>
+
+    <div>
+        @Html.Label("Address")
+        @Html.TextAreaFor(x=>x.Address)
+        @Html.ValidationMessageFor(x=>x.Address)
+    </div>
+
+    <div>
+        <input type="submit" value="Register"/>
+    </div>
+}

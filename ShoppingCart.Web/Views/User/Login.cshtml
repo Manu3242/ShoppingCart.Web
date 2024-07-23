@@ -1,0 +1,46 @@
+﻿@model LoginVM
+
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+
+    <table>
+        <tr>
+            <td>
+                @Html.Label("User Name")
+            </td>
+            <td>
+                @Html.EditorFor(x=>x.UserName)
+                @Html.ValidationMessageFor(x=>x.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("Password")
+            </td>
+            <td>
+                @Html.PasswordFor(x=>x.Password)
+                @Html.ValidationMessageFor(x=>x.Password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Login"/>
+            </td>
+            <td>
+                @Html.ActionLink("Register","Registration","User")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    @if (ViewBag.Message != null)
+                    {
+                        @ViewBag.Message
+                    }
+                </div>
+            </td>
+        </tr>
+    </table>
+}
